@@ -1,0 +1,276 @@
+{
+  "info": {
+    "name": "WageTrack API",
+    "_postman_id": "a7d9f29d-ef35-4dbf-8df1-8d49a7b43f10",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "workerId",
+      "value": "1"
+    },
+    {
+      "key": "worksiteId",
+      "value": "1"
+    },
+    {
+      "key": "attendanceId",
+      "value": "1"
+    },
+    {
+      "key": "paymentId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Workers",
+      "item": [
+        {
+          "name": "Create worker",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerCode\": \"W001\",\n  \"name\": \"Ravi Kumar\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Mysuru, Karnataka\",\n  \"dailyWage\": 800,\n  \"active\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/workers"
+          }
+        },
+        {
+          "name": "List workers",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/workers"
+          }
+        },
+        {
+          "name": "Get worker",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/workers/{{workerId}}"
+          }
+        },
+        {
+          "name": "Update worker",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerCode\": \"W001\",\n  \"name\": \"Ravi Kumar\",\n  \"phone\": \"9876543210\",\n  \"address\": \"Mysuru, Karnataka\",\n  \"dailyWage\": 850,\n  \"active\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/workers/{{workerId}}"
+          }
+        },
+        {
+          "name": "Deactivate worker",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/workers/{{workerId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Worksites",
+      "item": [
+        {
+          "name": "Create worksite",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteCode\": \"S001\",\n  \"siteName\": \"Canal Repair\",\n  \"location\": \"Mysuru\",\n  \"description\": \"Canal maintenance\",\n  \"active\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/worksites"
+          }
+        },
+        {
+          "name": "List worksites",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/worksites"
+          }
+        },
+        {
+          "name": "Get worksite",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/worksites/{{worksiteId}}"
+          }
+        },
+        {
+          "name": "Update worksite",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteCode\": \"S001\",\n  \"siteName\": \"Canal Repair Phase 2\",\n  \"location\": \"Mysuru\",\n  \"description\": \"Updated site\",\n  \"active\": true\n}"
+            },
+            "url": "{{baseUrl}}/api/worksites/{{worksiteId}}"
+          }
+        },
+        {
+          "name": "Deactivate worksite",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/worksites/{{worksiteId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Create attendance",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": 1,\n  \"worksiteId\": 1,\n  \"attendanceDate\": \"2026-09-21\",\n  \"status\": \"PRESENT\",\n  \"overtimeHours\": 2\n}"
+            },
+            "url": "{{baseUrl}}/api/attendance"
+          }
+        },
+        {
+          "name": "List attendance",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/attendance"
+          }
+        },
+        {
+          "name": "Get attendance",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/attendance/{{attendanceId}}"
+          }
+        },
+        {
+          "name": "Update attendance",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": 1,\n  \"worksiteId\": 1,\n  \"attendanceDate\": \"2026-09-21\",\n  \"status\": \"HALF_DAY\",\n  \"overtimeHours\": 0\n}"
+            },
+            "url": "{{baseUrl}}/api/attendance/{{attendanceId}}"
+          }
+        },
+        {
+          "name": "Delete attendance",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/attendance/{{attendanceId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payroll",
+      "item": [
+        {
+          "name": "Weekly payroll",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/payroll/worker/{{workerId}}/weekly?weekStartDate=2026-09-21&weekEndDate=2026-09-27"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": 1,\n  \"weekStartDate\": \"2026-09-21\",\n  \"weekEndDate\": \"2026-09-27\",\n  \"amountPaid\": 2000,\n  \"paymentDate\": \"2026-09-28\",\n  \"remarks\": \"First instalment\"\n}"
+            },
+            "url": "{{baseUrl}}/api/payments"
+          }
+        },
+        {
+          "name": "List payments",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/payments"
+          }
+        },
+        {
+          "name": "Get payment",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/payments/{{paymentId}}"
+          }
+        },
+        {
+          "name": "Update payment",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workerId\": 1,\n  \"weekStartDate\": \"2026-09-21\",\n  \"weekEndDate\": \"2026-09-27\",\n  \"amountPaid\": 4850,\n  \"paymentDate\": \"2026-09-28\",\n  \"remarks\": \"Settled\"\n}"
+            },
+            "url": "{{baseUrl}}/api/payments/{{paymentId}}"
+          }
+        }
+      ]
+    }
+  ]
+}

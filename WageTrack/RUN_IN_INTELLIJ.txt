@@ -1,0 +1,14 @@
+WAGETRACK — RUN IN INTELLIJ IDEA (PORT 8080)
+
+Requirements: JDK 17+, IntelliJ IDEA, Maven (IntelliJ can use bundled Maven), and MySQL 8+.
+
+1. Extract this ZIP. In IntelliJ choose File > Open and select the WageTrack folder (the folder containing pom.xml). Trust the project and wait for Maven dependencies to load.
+2. In MySQL Workbench or MySQL command line, run: CREATE DATABASE wagetrack_db;
+3. Set your MySQL password for the run configuration: Run > Edit Configurations > Environment variables, add DB_PASSWORD=YOUR_MYSQL_PASSWORD. If needed add DB_USERNAME=root. Do not include quotes.
+   Alternatively, edit src/main/resources/application.properties and set spring.datasource.password to your local password.
+4. Open src/main/java/com/example/wagetrack/WageTrackApplication.java and click the green Run icon next to the main method. The Spring Boot backend and frontend are served by the same app.
+5. Open http://localhost:8080 in Chrome. The dashboard, workers, worksites, attendance, payroll and payments screens call the existing REST API.
+
+Database URL defaults to jdbc:mysql://localhost:3306/wagetrack_db. Port 3306 is the usual MySQL port; 8080 is the Spring Boot web port. If your MySQL uses another port, set DB_URL, e.g. jdbc:mysql://localhost:3307/wagetrack_db?createDatabaseIfNotExist=true.
+
+Troubleshooting: If connection is refused, start MySQL and verify its port. If Access denied appears, verify DB_USERNAME and DB_PASSWORD. If port 8080 is already occupied, stop the other app or change server.port in application.properties. The browser UI requires the Spring Boot application to be running; opening index.html directly will not connect to the API.
